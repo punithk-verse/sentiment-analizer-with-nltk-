@@ -1,0 +1,22 @@
+
+from nltk.sentiment import SentimentIntensityAnalyzer
+
+print("Chatbot Sentiment Analyzer (type 'exit' to quit)")
+sia = SentimentIntensityAnalyzer()
+
+while True:
+    text = input("Enter a sentence: ")
+    if text.lower() == "exit":
+        break
+
+    score = sia.polarity_scores(text)
+    print("Scores:", score)
+
+    compound = score['compound']
+    if compound >= 0.05:
+        print("Positive statement detected 😊")
+    elif compound <= -0.05:
+        print("Negative statement detected 😞")
+    else:
+        print("Neutral statement detected 😐")
+    print("-" * 40)
